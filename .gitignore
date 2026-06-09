@@ -8,3 +8,4 @@ backend/.gradle/
 *.log
 .idea/
 .DS_Store
+data/

@@ -13,7 +13,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
     networks:
@@ -57,7 +57,7 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: teojaba-tunnel
     restart: unless-stopped
-    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    command: tunnel --no-autoupdate --protocol http2 --config /etc/cloudflared/config.yml run
     volumes:
       - ./cloudflared/config.yml:/etc/cloudflared/config.yml
       - ~/.cloudflared/52e8b897-cafb-474f-a5b5-710285428aa7.json:/etc/cloudflared/creds.json
@@ -65,9 +65,6 @@ services:
       - frontend
     networks:
       - teojaba-network
-
-volumes:
-  mysql-data:
 
 networks:
   teojaba-network:
