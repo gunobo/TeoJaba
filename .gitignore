@@ -1,0 +1,10 @@
+.env
+.env.local
+node_modules/
+build/
+backend/build/
+backend/.gradle/
+*.jar
+*.log
+.idea/
+.DS_Store
