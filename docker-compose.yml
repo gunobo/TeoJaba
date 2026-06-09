@@ -45,7 +45,7 @@ services:
     container_name: teojaba-frontend
     restart: unless-stopped
     ports:
-      - "1012:80"
+      - "1002:80"
     environment:
       REACT_APP_KAKAO_MAP_API_KEY: ${REACT_APP_KAKAO_MAP_API_KEY}
     depends_on:
@@ -57,9 +57,10 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: teojaba-tunnel
     restart: unless-stopped
-    command: tunnel --no-autoupdate run
-    environment:
-      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml
+      - ~/.cloudflared/52e8b897-cafb-474f-a5b5-710285428aa7.json:/etc/cloudflared/creds.json
     depends_on:
       - frontend
     networks:

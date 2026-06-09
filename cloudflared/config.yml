@@ -1,0 +1,7 @@
+tunnel: 52e8b897-cafb-474f-a5b5-710285428aa7
+credentials-file: /etc/cloudflared/creds.json
+
+ingress:
+  - hostname: teojaba.imjemin.co.kr
+    service: http://teojaba-frontend:80
+  - service: http_status:404
