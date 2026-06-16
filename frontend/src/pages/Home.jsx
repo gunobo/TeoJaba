@@ -58,7 +58,7 @@ export default function Home() {
         <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/60 to-transparent z-10" />
           <div className="absolute right-12 top-1/2 -translate-y-1/2 grid grid-cols-2 gap-3 opacity-60">
-            {['전주 94점', '제주 91점', '춘천 88점', '광주 87점', '부산 85점', '대구 83점'].map((t, i) => (
+            {['전주 94점', '제주 91점', '춘천 88점', '광주 87점', '부산 85점', '대구 83점', '대전 82점', '강릉 78점'].map((t, i) => (
               <div key={i} className="bg-white/8 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-sm">
                 <p className="text-white/90 text-sm font-medium">{t}</p>
               </div>
@@ -97,10 +97,10 @@ export default function Home() {
       {/* ── 통계 ── */}
       <section className="border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100">
-          <StatItem end={243} suffix="개" label="등록된 지역" />
-          <StatItem end={3200} suffix="건+" label="지자체 혜택" />
-          <StatItem end={1840} suffix="개" label="정착 후기" />
-          <StatItem end={520} suffix="건" label="멘토링 연결" />
+          <StatItem end={16} suffix="개" label="추천 지역" />
+          <StatItem end={40} suffix="개+" label="청년 지원 혜택" />
+          <StatItem end={1240} suffix="개+" label="연계 일자리" />
+          <StatItem end={300} suffix="만원" label="평균 이주 지원금" />
         </div>
       </section>
 

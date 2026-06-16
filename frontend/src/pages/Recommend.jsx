@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import KakaoMap from '../components/KakaoMap';
 
 const JOBS = [
   { id: 'it', label: 'IT·개발', emoji: '💻' },
@@ -33,27 +34,27 @@ const INFRA = [
 const RESULTS = [
   {
     rank: 1, name: '전주', province: '전라북도', score: 94,
-    monthly: 35, jobCount: 1240, benefit: 300,
-    desc: '청년 지원 정책 전국 최고 수준. KTX 서울 1시간 20분. 한옥마을과 문화 인프라가 풍부합니다.',
-    highlights: ['청년 창업지원금 300만원', '주거지원 월 20만원', 'KTX 서울 1시간 20분'],
+    monthly: 35, jobCount: 1240, benefit: 500,
+    desc: '청년 지원 정책 전국 최고 수준. KTX 서울 1시간 20분. 한옥마을·문화 인프라 풍부. 월세·창업·취업 5종 지원 동시 운영.',
+    highlights: ['청년 창업 도약 패키지 최대 500만원', '월세 지원 월 20만원 (최대 2년)', '전세 보증금 무이자 대출 3,000만원', 'KTX 서울 1시간 20분'],
   },
   {
     rank: 2, name: '제주', province: '제주특별자치도', score: 91,
-    monthly: 55, jobCount: 890, benefit: 200,
-    desc: '원격 근무 인프라 구축 완료. IT 인재 이주 지원 프로그램 운영 중. 자연환경 최고입니다.',
-    highlights: ['IT 이주 정착금 200만원', '원격근무 환경 우수', '자연환경 최고'],
+    monthly: 55, jobCount: 890, benefit: 300,
+    desc: '청정 자연 속 원격 근무 최적지. IT·디지털 인재 이주 정착금 300만원. 로컬 크리에이터 창업 생태계 급성장.',
+    highlights: ['IT 인재 이주 정착금 최대 300만원', '로컬 크리에이터 창업 지원 1,000만원', '주거 안심 지원 월 15만원', '디지털 교육비 지원 200만원'],
   },
   {
-    rank: 3, name: '춘천', province: '강원특별자치도', score: 88,
-    monthly: 38, jobCount: 760, benefit: 240,
-    desc: '수도권 접근성과 청정 자연의 조합. 강원 청년 이주 지원 정책으로 주거비 부담을 낮출 수 있습니다.',
-    highlights: ['이주 정착금 100만원', '주거지원 월 20만원', '서울 1.5시간 거리'],
+    rank: 3, name: '광주', province: '광주광역시', score: 87,
+    monthly: 42, jobCount: 2100, benefit: 1000,
+    desc: 'AI 스타트업 허브로 급성장. 광주형 일자리·AI 클러스터 취업 생태계 성장. 광역시급 인프라로 생활 편의성 우수.',
+    highlights: ['AI 스타트업 인큐베이팅 최대 1,000만원', '광주형 일자리 장려금 월 30만원', '문화콘텐츠 창업 지원 600만원', 'AI·SW 교육비 지원 300만원'],
   },
   {
-    rank: 4, name: '광주', province: '광주광역시', score: 87,
-    monthly: 42, jobCount: 2100, benefit: 180,
-    desc: 'AI 스타트업 허브로 급성장 중. 광주형 일자리와 AI 클러스터로 청년 취업 생태계가 성장하고 있습니다.',
-    highlights: ['AI 창업 인큐베이팅 500만원', '광주형 일자리 지원', '광역시급 인프라'],
+    rank: 4, name: '대전', province: '대전광역시', score: 82,
+    monthly: 45, jobCount: 2200, benefit: 1500,
+    desc: 'KAIST·대덕연구단지 기반 과학기술 도시. KTX 서울 50분. 딥테크 창업 지원 전국 최고. 연구직·엔지니어 최적지.',
+    highlights: ['딥테크 창업 지원 최대 1,500만원', '연구소 인턴십 월 200만원', '행복주택 시세 60%', '과학기술 교육 바우처 250만원'],
   },
 ];
 
@@ -175,6 +176,20 @@ export default function Recommend() {
             <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">추천 지역</h1>
             <p className="text-gray-500">조건을 분석해 최적의 지역을 찾았어요</p>
           </div>
+
+          {/* 카카오맵 */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-bold text-gray-700">지도에서 보기</h2>
+              <div className="flex items-center gap-3 text-xs text-gray-400">
+                <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-green-600"></span> 90점+</span>
+                <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-blue-600"></span> 85점+</span>
+                <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-orange-500"></span> 80점+</span>
+              </div>
+            </div>
+            <KakaoMap regions={RESULTS} />
+          </div>
+
           <div className="grid sm:grid-cols-2 gap-4">
             {RESULTS.map(r => <ResultCard key={r.rank} r={r} />)}
           </div>

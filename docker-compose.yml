@@ -42,12 +42,12 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        REACT_APP_KAKAO_MAP_API_KEY: ${REACT_APP_KAKAO_MAP_API_KEY}
     container_name: teojaba-frontend
     restart: unless-stopped
     ports:
       - "1002:80"
-    environment:
-      REACT_APP_KAKAO_MAP_API_KEY: ${REACT_APP_KAKAO_MAP_API_KEY}
     depends_on:
       - backend
     networks:
